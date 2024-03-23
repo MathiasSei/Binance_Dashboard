@@ -1,0 +1,8 @@
+body {
+    background-color: #1E1E1E;
+    color: #FFFFFF;  /* Set text color to white for visibility */
+}
+
+.cryptoAssets {
+    border: 1px solid rgb(255, 255, 255);
+}

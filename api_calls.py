@@ -120,3 +120,21 @@ def get_total_assets_in_USDT():
     total_assets["TradingBots"] = trading_bot_assets #API does not support trading bot assets, edit this value manually
     total_assets["Total"] = round(float(spot_value) + earn_assets_value + total_assets["TradingBots"], 2)
     return total_assets, coin_values
+
+import urllib.parse
+
+def get_all_trades():
+    api_key, api_secret, headers = get_api_keys()
+    params = {
+        "symbol": "BTCUSDT",
+        "startTime": 1704133438000,
+        "timestamp": int(time.time() * 1000)  # Current timestamp in milliseconds
+    }
+    params = dict(sorted(params.items()))  # Sort parameters by key
+    query_string = urllib.parse.urlencode(params)  # URL-encode parameters
+    signature = hmac.new(bytes(api_secret , 'latin-1'), msg = bytes(query_string , 'latin-1'), digestmod = hashlib.sha256).hexdigest()
+    params['signature'] = signature
+    trades_url = "/api/v3/myTrades"
+    url = base_url + trades_url
+    response = requests.get(url, headers=headers, params=params).json()
+    return response
