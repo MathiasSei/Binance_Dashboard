@@ -105,13 +105,18 @@ def get_total_assets_in_USDT():
     spot_assets = get_spot_assets()
     earn_assets, earn_assets_value = get_earn_assets()
     total_assets = {}
+    coin_values = {}
     spot_value = 0
     for i in spot_assets:
+        if i in ["BTC", "USDT", "BNB"]:
+            coin_values[i] = float(spot_assets[i]["USDValuation"])
         spot_value += float(spot_assets[i]["USDValuation"])
+    for i in earn_assets:
+        for j in earn_assets[i]:
+            if j["asset"] in ["BTC", "USDT", "BNB"]:
+                coin_values[j["asset"]] = float(j["amount"])
     total_assets["Spot"] = spot_value
     total_assets["Earn"] = earn_assets_value
     total_assets["TradingBots"] = trading_bot_assets #API does not support trading bot assets, edit this value manually
     total_assets["Total"] = round(float(spot_value) + earn_assets_value + total_assets["TradingBots"], 2)
-    return total_assets
-
-print(get_total_assets_in_USDT())
+    return total_assets, coin_values
