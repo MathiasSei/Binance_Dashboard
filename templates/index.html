@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>My Website</title>
-    <meta http-equiv="refresh" content="5"> <!-- Refresh every 5 seconds -->
+    <meta http-equiv="refresh" content="10"> <!-- Refresh every 5 seconds -->
 </head>
 <body>
 
-    <h1>The BTC price is: {{ btcPrice }}</h1>
+    <h1>The BTC price is: ${{ btcPrice }}</h1>
+
+    <h1>Total value of all assets are:</h1>
+    <h1>${{ totalValue }} = {{ totalBTCValue }} BTC</h1>
+
     
 </body>
 </html>
