@@ -28,6 +28,12 @@ def create_signature(api_secret, timestamp):
     hmac_obj = hmac.new(api_secret.encode(), query_string.encode(), hashlib.sha256)
     return hmac_obj.hexdigest()
 
+#Gets BTC/USDT price from the Binance API
+def get_btc_price():
+    url = base_url + "/api/v3/ticker/price?symbol=BTCUSDT"
+    response = requests.get(url)
+    return int(float(response.json()["price"])) #Converts the price to an integer
+
 #Gets the user's assets from the Binance API
 def get_user_assets():
     api_key, api_secret = get_api_keys()
@@ -41,5 +47,3 @@ def get_user_assets():
     url = base_url + userAssets
     response = requests.post(url, headers=headers)
     return response.json()
-
-print(get_user_assets())
