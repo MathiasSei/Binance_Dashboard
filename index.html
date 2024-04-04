@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <meta charset="UTF-8">
     <title>My Website</title>
-    <meta http-equiv="refresh" content="10"> <!-- Refresh every 5 seconds -->
-    <script src="../script.js"></script>
 </head>
 <body>
     <div class="outline">
-        <h1 style="font-size: 6em;" id="myElement">BTC: $65974</h1>
-
+        <h1 style="font-size: 6em;" id="BTCPrice"></h1>
+        
         <h1>Total value of all assets are:</h1>
         <table class="cryptoAssets">
             <tr>
@@ -19,21 +16,22 @@
                 <th>Amount</th>
             </tr>
             <tr>
-                    <td>USDT</td>
-                    <td>$12565.36</td>
+                <td>USDT</td>
+                <td>$12565.36</td>
             </tr>
             <tr>
-                    <td>BTcxbcxvbxcbC</td>
-                    <td>$2345.1</td>
+                <td>BTC</td>
+                <td>$2345.1</td>
             </tr>
             <tr>
                 <td>BNB</td>
                 <td>$6.2</td>
             </tr>
         </table>
-
+        
         <h1>$14872.35 = 0.22524 BTC</h1>
-
+        
     </div>
 </body>
+<script src="script.js"></script>
 </html>

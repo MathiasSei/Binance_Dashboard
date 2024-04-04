@@ -2,6 +2,12 @@ import hashlib
 import hmac
 import requests
 
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
 
 import time
 
@@ -55,10 +61,12 @@ def create_signature(api_secret, params=None):
     return timestamp_signature
 
 #Gets BTC/USDT price from the Binance API
+@app.route('/btc_Price', methods=['POST'])
 def get_btc_price():
     url = base_url + "/api/v3/ticker/price?symbol=BTCUSDT"
     response = requests.get(url)
-    return int(float(response.json()["price"])) #Converts the price to an integer
+    response = int(float(response.json()["price"])) #Converts the price to an integer
+    return jsonify(response) #Converts the price to an integer
 
 #Gets the user's assets from the Binance API
 def get_spot_assets():
@@ -139,3 +147,6 @@ def get_all_trades():
     url = base_url + trades_url
     response = requests.get(url, headers=headers, params=params).json()
     return response
+
+if __name__ == '__main__':
+    app.run(port=5001)
