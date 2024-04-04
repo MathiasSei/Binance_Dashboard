@@ -5,6 +5,9 @@ import requests
 
 import time
 
+base_url = "https://api.binance.com" #The URL of the Binance API
+trading_bot_assets = 493 #Edit this value manually
+
 def timer(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()  # Start time before function execution
@@ -14,8 +17,6 @@ def timer(func):
         return result
     return wrapper
 
-base_url = "https://api.binance.com" #The URL of the Binance API
-trading_bot_assets = 781 #Edit this value manually
 
 
 

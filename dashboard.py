@@ -25,7 +25,7 @@ def index():
                            totalValue = totalValue_coinValues[0]["Total"],
                            totalBTCValue = round(totalValue_coinValues[0]["Total"] / btcPrice, 5),
                            coin_data = coin_data,
-                           trades_list = trades_list
+                           trades_list = [] #Set to trades_list later
                            )
 
 if __name__ == '__main__':
