@@ -27,5 +27,5 @@ function fetchBTCPrice(){
     .catch(error => console.error('Error:', error));
 }
 
-
-setInterval(fetchBTCPrice(), 1000);
+fetchBTCPrice();
+setInterval(fetchBTCPrice, 15000);
